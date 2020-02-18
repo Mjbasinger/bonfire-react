@@ -13,7 +13,9 @@ import FooterComponent from './Components/Footer'
 import HeaderComponent from './Components/Header'
 
 
+
 const App = () => {
+      
       const [posts, setPosts] = useState([])
 
       const addPost = post => {
@@ -26,21 +28,25 @@ const App = () => {
             ...posts
           ])
       }
-  
-  return (
+     
+      return (
+      
+       
+      
 
       <Router>
         <HeaderComponent/>
         <Switch>
           <Route exact path='/home' component={Home}/>
-          <Route exact path='/post' component={Post}/>
+          <Route exact path='/posts/:id' component={Post}/>
           <Route exact path='/add-post' component={AddPost} posts={posts}/>
           <Route exact path='/account/:name' component={Account}/>
-          <Route exact path='/sign-in' component={SignIn}/>
+          <Route exact path='/login' component={SignIn}/>
           <Route exact path='/sign-up' component={SignUp}/>
         </Switch>
         <FooterComponent />
-      </Router>
+        </Router>
+        
   );
 }
 

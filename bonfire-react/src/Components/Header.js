@@ -14,7 +14,8 @@ function HeaderComponent() {
                         <a><li>Games</li></a>
                         <a><li>Videos</li></a>
                         <Link to='/add-post'><li>New Post</li></Link>
-                        <li>My Account</li>
+                        <Link to='/login'><li>Login</li></Link>
+                        <Link to='/sign-up'><li>Sign Up</li></Link>
                     </ul>
                 </nav>
         </div>

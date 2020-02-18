@@ -1,12 +1,15 @@
+// import React from 'react'
 import React, { useState, useEffect } from 'react'
-import CommentComponent from '../Components/Comment'
+import { Link } from 'react-router-dom'
 
-const Post = (props) => {
-    const [post, setPost] = useState([])
+
+
+const CommentComponent = (props) => {
+    const [comment, setComment] = useState([])
    
     const pathName = props.history.location.pathname;
 
-    const getPost = async () => {
+    const getComment = async () => {
         const postPath = await fetch(`http://localhost:8000${pathName}`, {
             method: 'GET',
             headers: {
@@ -36,4 +39,5 @@ const Post = (props) => {
     )
 }
 
-export default Post
+export default CommentComponent
+
