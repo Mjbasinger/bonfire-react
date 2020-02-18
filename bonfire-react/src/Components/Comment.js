@@ -1,43 +1,44 @@
-// import React from 'react'
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 
-
+import { useInputValue } from '../helpers/customHooks'
 
 const CommentComponent = (props) => {
-    const [comment, setComment] = useState([])
-   
-    const pathName = props.history.location.pathname;
+    const title = useInputValue('')
+    // console.log(title.value)
+    const body = useInputValue('')
+    // console.log(body.value)
 
-    const getComment = async () => {
-        const postPath = await fetch(`http://localhost:8000${pathName}`, {
-            method: 'GET',
+    const handleSubmit = async (e) => {
+
+        const comment = {
+            title: title.value,
+            body: body.value
+        }
+        // console.log(post)
+        const newComment = await fetch('http://localhost:8000/comments/new', {
+            method: 'POST',
+            body: JSON.stringify(comment),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        const parsedPost = await postPath.json()
+        // console.log()
 
-        setPost(parsedPost)
-        console.log(setPost)
-        console.log(parsedPost)
+        // const parsedNewPost = await newPost.json()
+        props.history.push('/{props.pathname}')
     }
-    
-    
-    useEffect(()=>{
-        getPost()
-    },[])
+
+
 
     return (
-        <div>
-            
-            <h1>{post.title}</h1>
-            <h1>{post.body}</h1>
-            <hr/>
-            <CommentComponent />
-        </div>
+        <form onSubmit={handleSubmit}>
+            <label>Post</label>
+            <textarea {...body}></textarea>
+            <br />
+            <button type='submit'>Submit</button>
+        </form>
+
     )
 }
 
 export default CommentComponent
-

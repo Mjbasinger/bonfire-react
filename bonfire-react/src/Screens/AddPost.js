@@ -15,7 +15,7 @@ const AddPost = (props) => {
             title: title.value,
             body: body.value
         }
-        console.log(post)
+        // console.log(post)
         const newPost = await fetch('http://localhost:8000/posts/new', {
             method: 'POST',
             body: JSON.stringify(post),

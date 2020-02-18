@@ -16,8 +16,21 @@ const Post = (props) => {
         const parsedPost = await postPath.json()
 
         setPost(parsedPost)
-        console.log(setPost)
-        console.log(parsedPost)
+        // console.log(setPost)
+        // console.log(parsedPost)
+    }
+    const [deletedPost, deletePost] = useState([props.parsedPost]);
+
+    const removePost = async (e) => {
+      const removePostResponse = await fetch(`http://localhost:8000${pathName}`, {
+          method: 'DELETE'
+      })
+    //   e.target.getAttribute('title')
+      deletePost(deletedPost.filter(post => post.title !== props.post.title))
+      await removePostResponse.json();
+      props.history.push('/home')
+      console.log(deletedPost)
+      
     }
     
     
@@ -30,8 +43,9 @@ const Post = (props) => {
             
             <h1>{post.title}</h1>
             <h1>{post.body}</h1>
+            <button onClick={removePost}>Delete</button>
             <hr/>
-            <CommentComponent />
+            <CommentComponent pathName={pathName}/>
         </div>
     )
 }

@@ -24,10 +24,11 @@ const SignIn = (props) => {
                 'Content-Type': 'application/json'
             }
         })
-        // console.log(foundUser)
+        console.log(foundUser)
         const parsedUserResponse = await foundUser.json()
-
-        if (parsedUserResponse.status.code === 200) {
+        console.log(parsedUserResponse);
+        console.log(username)
+        if (parsedUserResponse && parsedUserResponse.username === username.value) {
             // props.loggedStatus();
             props.history.push('/home')
         } else {
