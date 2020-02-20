@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useInputValue } from '../helpers/customHooks'
+import { Form, Button, Header, TextArea, Input } from 'semantic-ui-react'
 
 const SignUp = (props) => {
     const name = useInputValue('')
@@ -29,25 +30,17 @@ const SignUp = (props) => {
         props.history.push('/home')
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input {...name}></input>
-                <br />
-                <label>Username</label>
-                <input {...username}></input>
-                <br />
-                <label>Email</label>
-                <input {...email}></input>
-                <br />
-                <label>Password</label>
-                <input {...password}></input>
-                <br />
-                <label>Needs</label>
-                <input {...needs}></input>
-                <br />
+        <div class='ui form ' style={{marginLeft:'2%', marginBottom:'1%'}}>
+            <Form onSubmit={handleSubmit}>
+                <div className='field'>
+                <input {...name} placeholder="Name"></input>                
+                <input {...username} placeholder="username"></input>
+                <input {...email} type='email' placeholder="email"></input>
+                <input {...password} type='password' placeholder="pasword"></input>
+                <input {...needs} placeholder="needs"></input>
+                </div>
                 <button type='submit'>Submit</button>
-            </form>
+            </Form>
         </div>
     )
 }

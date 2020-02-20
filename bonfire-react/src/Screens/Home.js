@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PostRow from '../Components/PostRow'
-
+import 'semantic-ui-css/semantic.min.css'
 
 const Home = (props) => {
     const [posts, setPosts] = useState(["loading"])
@@ -32,7 +32,7 @@ const Home = (props) => {
              props.history.push(`/posts/${postId}`)
              // console.log('this is showListig: ', this);
          } 
-    return (<div><PostRow posts={posts} redirect={showPost} /></div>)
+    return (<div class='grid'><PostRow posts={posts} redirect={showPost} getPosts={getPosts} /></div>)
 
 
 }

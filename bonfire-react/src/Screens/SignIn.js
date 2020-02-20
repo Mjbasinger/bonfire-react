@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useInputValue } from '../helpers/customHooks'
+import { Form, Button, Header, TextArea, Input } from 'semantic-ui-react'
 
 import {handleLogged} from '../helpers/customHooks'
 
@@ -24,29 +25,29 @@ const SignIn = (props) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(foundUser)
+        // console.log(foundUser)
         const parsedUserResponse = await foundUser.json()
-        console.log(parsedUserResponse);
-        console.log(username)
+        // console.log(parsedUserResponse);
+        // console.log(username)
         if (parsedUserResponse && parsedUserResponse.username === username.value) {
             // props.loggedStatus();
             props.history.push('/home')
         } else {
-            console.log('login failed: ', parsedUserResponse);
+            // console.log('login failed: ', parsedUserResponse);
             
         }
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input {...username}></input>
-                <br />
-                <label>Password</label>
-                <input {...password}></input>
-                <br />
-                <button type='submit'>Submit</button>
-            </form>
+        <div class='ui form ' style={{marginLeft:'2%', marginBottom:'1%'}}>
+            <Form onSubmit={handleSubmit}>
+                
+                <input {...username} placeholder="username"></input>
+                
+                
+                <input {...email} type='email' placeholder="email"></input>
+                
+                <Button type='submit'>Submit</Button>
+            </Form>
         </div>
     )
 }

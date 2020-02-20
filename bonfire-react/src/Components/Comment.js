@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, TextArea, Form } from 'semantic-ui-react'
 
 import { useInputValue } from '../helpers/customHooks'
 
@@ -31,12 +32,12 @@ const CommentComponent = (props) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Form  onSubmit={handleSubmit}>
             <label>Post</label>
-            <textarea {...body}></textarea>
+            <TextArea placeholder='Write your comment here'  {...body}></TextArea>
             <br />
-            <button type='submit'>Submit</button>
-        </form>
+            <Button type='submit'>Submit</Button>
+        </Form>
 
     )
 }
