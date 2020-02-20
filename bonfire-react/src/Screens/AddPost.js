@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button, Header, TextArea, Input } from 'semantic-ui-react'
 
 import { useInputValue } from '../helpers/customHooks'
 
@@ -15,7 +16,7 @@ const AddPost = (props) => {
             title: title.value,
             body: body.value
         }
-        console.log(post)
+        // console.log(post)
         const newPost = await fetch('http://localhost:8000/posts/new', {
             method: 'POST',
             body: JSON.stringify(post),
@@ -32,7 +33,8 @@ const AddPost = (props) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+            <div class='grid container' style={{marginLeft:'2%', marginBottom:'1%'}}>
             <label>Title</label>
             <input {...title}></input>
             <br />
@@ -40,7 +42,8 @@ const AddPost = (props) => {
             <textarea {...body}></textarea>
             <br />
             <button type='submit'>Submit</button>
-        </form>
+            </div>
+        </Form>
 
     )
 }

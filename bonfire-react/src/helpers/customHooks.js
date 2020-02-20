@@ -12,3 +12,11 @@ export const useInputValue = (props) => {
 }
 
 
+// export const handleLogged = (props) => {
+//     const [state, setState] = useState(props)
+      
+//     return {
+//         state: true,
+//         state: setState
+//     }
+//   }
